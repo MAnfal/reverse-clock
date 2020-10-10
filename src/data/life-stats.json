@@ -1,0 +1,44 @@
+{
+    "bed": {
+        "days": 12045
+    },
+    "work": {
+        "days": 4821
+    },
+    "screen_time": {
+        "days": 4127
+    },
+    "eating": {
+        "days": 1583
+    },
+    "holidays": {
+        "days": 1146
+    },
+    "exercise": {
+        "days": 1583
+    },
+    "romance": {
+        "days": 395
+    },
+    "socializing": {
+        "days": 368
+    },
+    "school": {
+        "days": 334
+    },
+    "laughing": {
+        "days": 115
+    },
+    "waiting_in_queues": {
+        "days": 235
+    },
+    "getting_ready": {
+        "days": {
+            "male": 46,
+            "female": 136
+        }
+    },
+    "leftover": {
+        "days": 2997
+    }
+}
