@@ -1,0 +1,10 @@
+version: "3.7"
+
+services: 
+    dev:
+        build: .
+        image: rev_clock_dev:1
+        volumes: 
+            - ./:/root/app
+        ports:
+            - 80:8080
