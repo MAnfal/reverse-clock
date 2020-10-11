@@ -39,3 +39,9 @@ export default {
     },
 }
 </script>
+
+<style scoped>
+    .echarts {
+        margin: 0 auto !important;
+    }
+</style>
