@@ -15,9 +15,9 @@
       </div>
     </div>
 
-    <div class="row">
-      <div class="col">
-        <scatter-plot :data="ageExpectance" />
+    <div class="row" v-if="isDataReady">
+      <div class="col-md-6">
+        <bar-plot :data="ageExpectance" :trend-years="buffer" :country="selectedCountry.text"/>
       </div>
     </div>
   </div>
@@ -27,7 +27,7 @@
 import { ModelSelect } from 'vue-search-select';
 import 'vue-search-select/dist/VueSearchSelect.css';
 import CountryInformation from '../data/age-by-country.json';
-import ScatterPlot from './scatter-plot.vue';
+import BarPlot from './plots/bar-plot.vue';
 
 export default {
   data() {
@@ -45,7 +45,7 @@ export default {
 
   components: {
     ModelSelect,
-    ScatterPlot
+    BarPlot
   },
 
   computed: {
@@ -63,7 +63,31 @@ export default {
     },
 
     ageExpectance() {
-      const data = [];
+      const data = {
+        legend: {},
+        tooltip: {},
+        dataset: {
+          source: [
+            ['Product'],
+            ['Age'],
+          ]
+        },
+        xAxis: { type: 'category' },
+        yAxis: {},
+        series: []
+      };
+
+      if (this.isDataReady) {
+        const yearsInformation = CountryInformation[this.selectedCountry.value].yearly_data;
+  
+        Object.keys(yearsInformation).slice(-1 * this.buffer).forEach((year) => {
+          data.series.push({ type: 'bar' });
+  
+          data.dataset.source[0].push(year);
+  
+          data.dataset.source[1].push(yearsInformation[year]);
+        });
+      }
 
       return data;
     }
