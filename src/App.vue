@@ -1,6 +1,8 @@
 <template>
-  <Header />
-  <main-content />
+  <div id="app">
+    <Header />
+    <main-content />
+  </div>
 </template>
 
 <script>
@@ -15,3 +17,11 @@ export default {
   }
 }
 </script>
+
+<style>
+#app {
+  font-family: Helvetica, Georgia, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+</style>
