@@ -1,7 +1,7 @@
 <template>
-    <div class="card mt-5">
+    <div class="card">
         <div class="card-header">
-            Your Life Image On A Glance
+            Your Life Image At A Glance
         </div>
 
         <div class="card-body">

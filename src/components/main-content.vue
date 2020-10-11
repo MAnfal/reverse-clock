@@ -20,7 +20,21 @@
       </div>
     </div>
 
-    <div class="row" v-if="isDataReady">
+    <div class="row mt-5" v-if="isDataReady">
+      <div class="col">
+        <div class="card">
+            <div class="card-header">
+                Remaining Life Ticker
+            </div>
+
+            <div class="card-body">
+                <h3 style="text-align: center;">{{ countDownString }}</h3>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-5" v-if="isDataReady">
       <div class="col">
         <bar-plot :data="ageExpectance" :trend-years="buffer" :country="selectedCountry.text"/>
       </div>
@@ -69,7 +83,11 @@ export default {
           value: 'none',
           text: 'Preferred not to say'
         },
-      ]
+      ],
+
+      countDownString: null,
+
+      ageLeftInterval: null,
     };
   },
 
@@ -127,6 +145,37 @@ export default {
       const ageValues = Object.values(CountryInformation[this.selectedCountry.value].yearly_data);
 
       return ageValues[ageValues.length - 1]; 
+    },
+
+    yearsLeft() {
+      return this.expectedAge - this.age;
+    }
+  },
+
+  watch: {
+    isDataReady() {
+      if (this.isDataReady) {
+        if (this.ageLeftInterval) {
+          clearInterval(this.ageLeftInterval);
+        }
+
+        this.ageLeftInterval = setInterval(() => {
+          const currentDate = new Date();
+          const deadline = new Date(`Jan 1, ${currentDate.getFullYear() + this.yearsLeft} 00:00:00`).getTime();
+          const distance = deadline - currentDate.getTime();
+
+          if (distance <= 0) {
+            this.countDownString = 'You dead bro!!';
+          } else {
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            this.countDownString = `${ (days / 365).toFixed(2) } Years, ${ hours } Hours, ${ minutes } Minutes, ${ seconds } Seconds`;
+          }
+        }, 1000);
+      }
     }
   },
 }

@@ -10,11 +10,13 @@
 
 <style scoped>
     .bottom-footer {
-        position: absolute;
+        position: fixed;
         width: 100%;
         padding: 1%;
         text-align: center;
         bottom: 0;
+        left: 0;
         border-top: 1px solid;
+        background-color: #ffffff;
     }
 </style>
