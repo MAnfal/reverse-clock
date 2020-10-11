@@ -8,3 +8,4 @@ services:
             - ./:/root/app
         ports:
             - 80:8080
+            - 9005:9005
