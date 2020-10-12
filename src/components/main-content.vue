@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid mt-5" style="margin-bottom: 6rem;">
+  <div class="container-fluid mt-5" style="margin-bottom: 8rem;">
     <div class="form-row">
       <div class="col">
         <div class="card">
@@ -26,8 +26,8 @@
       </div>
     </div>
 
-    <div class="row mt-5" v-if="isDataReady">
-      <div class="col-md-6 col-sm-12">
+    <div class="row" v-if="isDataReady">
+      <div class="col-md-6 col-sm-12 mt-5">
         <div class="card">
             <div class="card-header text-center">
                 <h3>Remaining Productive Life Ticker</h3>
@@ -39,7 +39,7 @@
         </div>
       </div>
 
-      <div class="col-md-6 col-sm-12">
+      <div class="col-md-6 col-sm-12 mt-5">
         <div class="card">
             <div class="card-header text-center">
                 <h3>Remaining Life Ticker</h3>
