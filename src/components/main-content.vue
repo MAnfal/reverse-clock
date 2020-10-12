@@ -202,13 +202,14 @@ export default {
   },
 
   methods: {
-    handleProductiveTimeTicker(years) {
-      console.log(years);
+    handleProductiveTimeTicker(yearsPercentage) {
         if (this.productiveAgeLeftInterval) {
           clearInterval(this.productiveAgeLeftInterval);
         }
 
         this.productiveAgeLeftInterval = setInterval(() => {
+          const years = yearsPercentage * this.yearsLeft;
+          console.log(years);
           const currentDate = new Date();
           const deadline = new Date(`Jan 1, ${currentDate.getFullYear() + years} 00:00:00`).getTime();
           const distance = deadline - currentDate.getTime();
