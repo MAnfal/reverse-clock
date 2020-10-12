@@ -1,5 +1,5 @@
 <template>
-    <div class="card">
+    <div class="card mt-5">
         <div class="card-header">
             Your Life Image At A Glance
         </div>
@@ -94,5 +94,7 @@ export default {
 <style scoped>
     .echarts {
         margin: 0 auto !important;
+        width: 100%;
+        height: 300px;
     }
 </style>

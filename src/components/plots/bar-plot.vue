@@ -1,5 +1,5 @@
 <template>
-    <div class="card">
+    <div class="card mt-5">
         <div class="card-header">
             Age Trend For The Past {{ trendYears }} Years In {{ country }}
         </div>
@@ -43,5 +43,7 @@ export default {
 <style scoped>
     .echarts {
         margin: 0 auto !important;
+        width: 100%;
+        height: 300px;
     }
 </style>
