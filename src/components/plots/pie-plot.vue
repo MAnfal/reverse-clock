@@ -1,7 +1,7 @@
 <template>
     <div class="card mt-5">
         <div class="card-header">
-            Your Life Image At A Glance
+            <h5 class="text-center">Your Life Image At A Glance</h5>
         </div>
 
         <div class="card-body">
@@ -24,6 +24,8 @@ import 'echarts/lib/component/tooltip';
 import 'echarts/lib/chart/pie';
 
 import LifeStatsUtility from '../../utilities/life-stats';
+
+import { isMobile } from 'mobile-device-detect';
 
 import { startCase, toLower } from 'lodash';
 
@@ -73,6 +75,11 @@ export default {
                     }
                 ]
             };
+
+            if (isMobile) {
+                internalData.series[0].radius = '35%';
+                internalData.series[0].center[1] = '80%';
+            }
 
             Object.keys(lifeInPrcentage).forEach((item) => {
                 const beautifulItem = startCase(toLower(item.replace("_", " ")));

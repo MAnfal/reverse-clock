@@ -1,7 +1,7 @@
 <template>
     <div class="card mt-5">
         <div class="card-header">
-            Age Trend For The Past {{ trendYears }} Years In {{ country }}
+            <h5 class="text-center">Age Trend For The Past {{ trendYears }} Years In {{ country }}</h5>
         </div>
 
         <div class="card-body">

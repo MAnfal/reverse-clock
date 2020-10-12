@@ -1,34 +1,40 @@
 <template>
-  <div class="container-fluid mt-4">
-    <div class="row">
-      <div class="col-md-12 text-center">
-        <h3>Your information</h3>
-      </div>
-    </div>
-    
+  <div class="container-fluid mt-5" style="margin-bottom: 6rem;">
     <div class="form-row">
       <div class="col">
-        <input type="number" min="1" class="form-control" placeholder="Age" v-model="age">
-      </div>
+        <div class="card">
+          <div class="card-header text-center">
+            <h3>Your Information</h3>
+          </div>
 
-      <div class="col">
-        <model-select :options="genderData" v-model="gender" placeholder="Gender" class="form-control" />
-      </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col">
+                <input type="number" min="1" class="form-control" placeholder="Age" v-model="age" />
+              </div>
 
-      <div class="col">
-        <model-select :options="countryData" v-model="selectedCountry" placeholder="Country" class="form-control" />
+              <div class="col">
+                <model-select :options="genderData" v-model="gender" placeholder="Gender" class="form-control" />
+              </div>
+
+              <div class="col">
+                <model-select :options="countryData" v-model="selectedCountry" placeholder="Country" class="form-control" />
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
     <div class="row mt-5" v-if="isDataReady">
       <div class="col">
         <div class="card">
-            <div class="card-header">
-                Remaining Life Ticker
+            <div class="card-header text-center">
+                <h3>Remaining Life Ticker</h3>
             </div>
 
             <div class="card-body">
-                <h3 style="text-align: center;">{{ countDownString }}</h3>
+                <h5 class="text-center">{{ countDownString }}</h5>
             </div>
         </div>
       </div>
@@ -36,7 +42,7 @@
 
     <div class="row" v-if="isDataReady">
       <div class="col-md-6 col-sm-12">
-        <bar-plot :data="ageExpectance" :trend-years="buffer" :country="selectedCountry.text"/>
+        <bar-plot :data="ageExpectance" :trend-years="buffer" :country="selectedCountry.text" />
       </div>
 
       <div class="col-md-6 col-sm-12">
