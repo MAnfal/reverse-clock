@@ -39,11 +39,3 @@ export default {
     },
 }
 </script>
-
-<style scoped>
-    .echarts {
-        margin: 0 auto !important;
-        width: 100%;
-        height: 300px;
-    }
-</style>
