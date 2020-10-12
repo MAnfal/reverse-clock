@@ -9,15 +9,15 @@
 
           <div class="card-body">
             <div class="row">
-              <div class="col">
+              <div class="col-md-4 col-sm-12 mt-2">
                 <input type="number" min="1" class="form-control" placeholder="Age" v-model="age" />
               </div>
 
-              <div class="col">
+              <div class="col-md-4 col-sm-12 mt-2">
                 <model-select :options="genderData" v-model="gender" placeholder="Gender" class="form-control" />
               </div>
 
-              <div class="col">
+              <div class="col-md-4 col-sm-12 mt-2">
                 <model-select :options="countryData" v-model="selectedCountry" placeholder="Country" class="form-control" />
               </div>
             </div>
