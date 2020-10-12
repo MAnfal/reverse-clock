@@ -24,7 +24,7 @@
 
             <div class="row mt-3">
               <div class="col text-center">
-                <button type="button" class="btn btn-light load-button" @click="handleLoadDataClick">Load Data</button>
+                <button type="button" class="btn btn-light load-button" @click="handleLoadDataClick" :style="loadDataButtonStyle">Load Data</button>
               </div>
             </div>
           </div>
@@ -77,6 +77,8 @@ import CountryInformation from '../data/age-by-country.json';
 import BarPlot from './plots/bar-plot.vue';
 import PiePlot from './plots/pie-plot.vue';
 
+import { isMobile } from 'mobile-device-detect';
+
 export default {
   data() {
     return {
@@ -128,6 +130,16 @@ export default {
   },
 
   computed: {
+    loadDataButtonStyle() {
+      const style = {};
+
+      if (isMobile) {
+        style['width'] = '100%';
+      }
+
+      return style;
+    },
+
     countryData() {
       return Object.keys(CountryInformation).map((country) => { 
         return {
