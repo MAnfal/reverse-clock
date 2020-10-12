@@ -6,7 +6,7 @@
       </div>
     </div>
     
-    <div class="form-row">
+    <div class="form-row mt-5">
       <div class="col">
         <input type="number" min="1" class="form-control" placeholder="Age" v-model="age">
       </div>
@@ -34,7 +34,7 @@
       </div>
     </div>
 
-    <div class="row" v-if="isDataReady">
+    <div class="row mb-5" v-if="isDataReady">
       <div class="col-md-6 col-sm-12">
         <bar-plot :data="ageExpectance" :trend-years="buffer" :country="selectedCountry.text"/>
       </div>
