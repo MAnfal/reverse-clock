@@ -21,6 +21,12 @@
                 <model-select :options="countryData" v-model="selectedCountry" placeholder="Country" class="form-control" />
               </div>
             </div>
+
+            <div class="row mt-3">
+              <div class="col text-center">
+                <button type="button" class="btn btn-light load-button" @click="handleLoadDataClick">Load Data</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -110,6 +116,8 @@ export default {
       ageLeftInterval: null,
 
       productiveAgeLeftInterval: null,
+
+      isDataReady: false,
     };
   },
 
@@ -127,10 +135,6 @@ export default {
           text: country
         };
       });
-    },
-
-    isDataReady() {
-      return this.selectedCountry.value && this.age && this.age > 0 && this.gender.value;
     },
 
     ageExpectance() {
@@ -209,7 +213,7 @@ export default {
 
         this.productiveAgeLeftInterval = setInterval(() => {
           const years = yearsPercentage * this.yearsLeft;
-          console.log(years);
+
           const currentDate = new Date();
           const deadline = new Date(`Jan 1, ${currentDate.getFullYear() + years} 00:00:00`).getTime();
           const distance = deadline - currentDate.getTime();
@@ -225,6 +229,12 @@ export default {
             this.productiveCountDownString = `${ (days / 365).toFixed(2) } Years, ${ hours } Hours, ${ minutes } Minutes, ${ seconds } Seconds`;
           }
         }, 1000);
+    },
+
+    handleLoadDataClick() {
+      if (this.selectedCountry.value && this.age && this.age > 0 && this.gender.value) {
+        this.isDataReady = true;
+      }
     }
   }
 }
