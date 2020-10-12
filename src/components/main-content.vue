@@ -27,7 +27,19 @@
     </div>
 
     <div class="row mt-5" v-if="isDataReady">
-      <div class="col">
+      <div class="col-md-6 col-sm-12">
+        <div class="card">
+            <div class="card-header text-center">
+                <h3>Remaining Productive Life Ticker</h3>
+            </div>
+
+            <div class="card-body">
+                <h5 class="text-center">{{ productiveCountDownString }}</h5>
+            </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-sm-12">
         <div class="card">
             <div class="card-header text-center">
                 <h3>Remaining Life Ticker</h3>
@@ -46,7 +58,7 @@
       </div>
 
       <div class="col-md-6 col-sm-12">
-        <pie-plot :gender="gender.value" :expectedAge="expectedAge" />
+        <pie-plot :gender="gender.value" :expectedAge="expectedAge" @show-productive-ticker="handleProductiveTimeTicker" />
       </div>
     </div>
   </div>
@@ -93,7 +105,11 @@ export default {
 
       countDownString: null,
 
+      productiveCountDownString: null,
+
       ageLeftInterval: null,
+
+      productiveAgeLeftInterval: null,
     };
   },
 
@@ -184,5 +200,31 @@ export default {
       }
     }
   },
+
+  methods: {
+    handleProductiveTimeTicker(years) {
+      console.log(years);
+        if (this.productiveAgeLeftInterval) {
+          clearInterval(this.productiveAgeLeftInterval);
+        }
+
+        this.productiveAgeLeftInterval = setInterval(() => {
+          const currentDate = new Date();
+          const deadline = new Date(`Jan 1, ${currentDate.getFullYear() + years} 00:00:00`).getTime();
+          const distance = deadline - currentDate.getTime();
+
+          if (distance <= 0) {
+            this.productiveCountDownString = 'You dead bro!!';
+          } else {
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            this.productiveCountDownString = `${ (days / 365).toFixed(2) } Years, ${ hours } Hours, ${ minutes } Minutes, ${ seconds } Seconds`;
+          }
+        }, 1000);
+    }
+  }
 }
 </script>

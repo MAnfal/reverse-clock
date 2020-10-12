@@ -83,13 +83,18 @@ export default {
 
             Object.keys(lifeInPrcentage).forEach((item) => {
                 const beautifulItem = startCase(toLower(item.replace("_", " ")));
+                const years = parseFloat((lifeInPrcentage[item] * this.expectedAge).toFixed(2));
 
                 internalData.legend.data.push(beautifulItem);
 
                 internalData.series[0].data.push({
-                    value: parseFloat((lifeInPrcentage[item] * this.expectedAge).toFixed(2)),
+                    value: years,
                     name: beautifulItem
                 });
+
+                if (item === 'left_over') {
+                    this.$emit('show-productive-ticker', years)
+                }
             });
 
             return internalData;
