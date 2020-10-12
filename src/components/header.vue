@@ -9,13 +9,13 @@
         <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+    <!-- <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item active">
                 <a class="nav-link" href="https://trello.com/b/xH3tB0IW/reverese-clock" target="_blank">Roadmap <span class="sr-only">(current)</span></a>
             </li>
         </ul>
-    </div>
+    </div> -->
   </nav>
 </template>
 
